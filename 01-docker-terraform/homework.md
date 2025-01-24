@@ -174,7 +174,199 @@ Copy the files from the course repo
 
 Modify the files as necessary to create a GCP Bucket and Big Query Dataset.
 
+####Solution:
+```
+(base) ➜  terraform_with_variables git:(main) ✗ terraform init
+Initializing the backend...
+Initializing provider plugins...
+- Finding hashicorp/google versions matching "6.16.0"...
+- Installing hashicorp/google v6.16.0...
+- Installed hashicorp/google v6.16.0 (signed by HashiCorp)
+Terraform has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that Terraform can guarantee to make the same selections by default when
+you run "terraform init" in the future.
 
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+
+(base) ➜  terraform_with_variables git:(main) ✗ terraform plan
+
+Terraform used the selected providers to generate the following execution plan.
+Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # google_bigquery_dataset.demo_dataset will be created
+  + resource "google_bigquery_dataset" "demo_dataset" {
+      + creation_time              = (known after apply)
+      + dataset_id                 = "nytaxidata"
+      + default_collation          = (known after apply)
+      + delete_contents_on_destroy = false
+      + effective_labels           = {
+          + "goog-terraform-provisioned" = "true"
+        }
+      + etag                       = (known after apply)
+      + id                         = (known after apply)
+      + is_case_insensitive        = (known after apply)
+      + last_modified_time         = (known after apply)
+      + location                   = "EUROPE-WEST1"
+      + max_time_travel_hours      = (known after apply)
+      + project                    = "festive-music-448221-u0"
+      + self_link                  = (known after apply)
+      + storage_billing_model      = (known after apply)
+      + terraform_labels           = {
+          + "goog-terraform-provisioned" = "true"
+        }
+
+      + access (known after apply)
+    }
+
+  # google_storage_bucket.demo-bucket will be created
+  + resource "google_storage_bucket" "demo-bucket" {
+      + effective_labels            = {
+          + "goog-terraform-provisioned" = "true"
+        }
+      + force_destroy               = true
+      + id                          = (known after apply)
+      + location                    = "EUROPE-WEST1"
+      + name                        = "dezoomcamp-festive-music-448221-u0-terraform-bucket"
+      + project                     = (known after apply)
+      + project_number              = (known after apply)
+      + public_access_prevention    = (known after apply)
+      + rpo                         = (known after apply)
+      + self_link                   = (known after apply)
+      + storage_class               = "STANDARD"
+      + terraform_labels            = {
+          + "goog-terraform-provisioned" = "true"
+        }
+      + uniform_bucket_level_access = (known after apply)
+      + url                         = (known after apply)
+
+      + lifecycle_rule {
+          + action {
+              + type          = "AbortIncompleteMultipartUpload"
+                # (1 unchanged attribute hidden)
+            }
+          + condition {
+              + age                    = 1
+              + matches_prefix         = []
+              + matches_storage_class  = []
+              + matches_suffix         = []
+              + with_state             = (known after apply)
+                # (3 unchanged attributes hidden)
+            }
+        }
+
+      + soft_delete_policy (known after apply)
+
+      + versioning (known after apply)
+
+      + website (known after apply)
+    }
+
+Plan: 2 to add, 0 to change, 0 to destroy.
+
+(base) ➜  terraform_with_variables git:(main) ✗ terraform apply
+
+Terraform used the selected providers to generate the following execution plan.
+Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # google_bigquery_dataset.demo_dataset will be created
+  + resource "google_bigquery_dataset" "demo_dataset" {
+      + creation_time              = (known after apply)
+      + dataset_id                 = "nytaxidata"
+      + default_collation          = (known after apply)
+      + delete_contents_on_destroy = false
+      + effective_labels           = {
+          + "goog-terraform-provisioned" = "true"
+        }
+      + etag                       = (known after apply)
+      + id                         = (known after apply)
+      + is_case_insensitive        = (known after apply)
+      + last_modified_time         = (known after apply)
+      + location                   = "EUROPE-WEST1"
+      + max_time_travel_hours      = (known after apply)
+      + project                    = "festive-music-448221-u0"
+      + self_link                  = (known after apply)
+      + storage_billing_model      = (known after apply)
+      + terraform_labels           = {
+          + "goog-terraform-provisioned" = "true"
+        }
+
+      + access (known after apply)
+    }
+
+  # google_storage_bucket.demo-bucket will be created
+  + resource "google_storage_bucket" "demo-bucket" {
+      + effective_labels            = {
+          + "goog-terraform-provisioned" = "true"
+        }
+      + force_destroy               = true
+      + id                          = (known after apply)
+      + location                    = "EUROPE-WEST1"
+      + name                        = "dezoomcamp-festive-music-448221-u0-terraform-bucket"
+      + project                     = (known after apply)
+      + project_number              = (known after apply)
+      + public_access_prevention    = (known after apply)
+      + rpo                         = (known after apply)
+      + self_link                   = (known after apply)
+      + storage_class               = "STANDARD"
+      + terraform_labels            = {
+          + "goog-terraform-provisioned" = "true"
+        }
+      + uniform_bucket_level_access = (known after apply)
+      + url                         = (known after apply)
+
+      + lifecycle_rule {
+          + action {
+              + type          = "AbortIncompleteMultipartUpload"
+                # (1 unchanged attribute hidden)
+            }
+          + condition {
+              + age                    = 1
+              + matches_prefix         = []
+              + matches_storage_class  = []
+              + matches_suffix         = []
+              + with_state             = (known after apply)
+                # (3 unchanged attributes hidden)
+            }
+        }
+
+      + soft_delete_policy (known after apply)
+
+      + versioning (known after apply)
+
+      + website (known after apply)
+    }
+
+Plan: 2 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+google_bigquery_dataset.demo_dataset: Creating...
+google_storage_bucket.demo-bucket: Creating...
+google_storage_bucket.demo-bucket: Creation complete after 2s [id=dezoomcamp-festive-music-448221-u0-terraform-bucket]
+google_bigquery_dataset.demo_dataset: Creation complete after 2s [id=projects/festive-music-448221-u0/datasets/nytaxidata]
+
+Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
+
+```
 ## Question 7. Terraform Workflow
 
 Which of the following sequences, **respectively**, describes the workflow for: 
