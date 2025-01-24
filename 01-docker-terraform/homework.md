@@ -247,7 +247,7 @@ Copy the files from the course repo
 
 Modify the files as necessary to create a GCP Bucket and Big Query Dataset.
 
-####Solution:
+#### Solution:
 ```
 (base) ➜  terraform_with_variables git:(main) ✗ terraform init
 Initializing the backend...
