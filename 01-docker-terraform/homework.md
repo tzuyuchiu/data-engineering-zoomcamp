@@ -73,7 +73,6 @@ volumes:
 #### Solution:
 - localhost:5432
 
-If there are more than one answers, select only one of them
 
 ##  Prepare Postgres
 
@@ -384,6 +383,3 @@ Answers:
 #### Solution:
 - terraform init, terraform apply -auto-approve, terraform destroy
   
-## Submitting the solutions
-
-* Form for submitting: https://courses.datatalks.club/de-zoomcamp-2025/homework/hw1
