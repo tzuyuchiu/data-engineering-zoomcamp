@@ -27,7 +27,10 @@ What's the version of `pip` in the image?
 
 #### Solution:
 - 24.3.1
-
+```
+docker run -it python:3.12.8 bash
+pip --version
+```
 ## Question 2. Understanding Docker networking and docker-compose
 
 Given the following `docker-compose.yaml`, what is the `hostname` and `port` that **pgadmin** should use to connect to the postgres database?
@@ -111,6 +114,46 @@ Answers:
 - 104,793;  202,661;  109,603;  27,678;  35,189
 - 104,838;  199,013;  109,645;  27,688;  35,202
 
+1.
+```
+SELECT
+COUNT(1)
+FROM
+green_taxi_trips
+WHERE trip_distance <=1;
+```
+2.
+```
+SELECT
+COUNT(1)
+FROM
+green_taxi_trips
+WHERE (trip_distance >1 AND trip_distance <=3);
+```
+3.
+```
+SELECT
+COUNT(1)
+FROM
+green_taxi_trips
+WHERE (trip_distance >3 AND trip_distance <=7);
+```
+4.
+```
+SELECT
+COUNT(1)
+FROM
+green_taxi_trips
+WHERE (trip_distance >7 AND trip_distance <=10);
+```
+5.
+```
+SELECT
+COUNT(1)
+FROM
+green_taxi_trips
+WHERE trip_distance > 10;
+```
 #### Solution:
 - 104,838;  199,013;  109,645;  27,688;  35,202
 
@@ -128,7 +171,14 @@ Tip: For every day, we only care about one single trip with the longest distance
 
 #### Solution:
 - 2019-10-31
-
+```
+SELECT
+date(lpep_pickup_datetime),MAX(trip_distance) AS longest_D
+FROM
+green_taxi_trips
+GROUP BY date(lpep_pickup_datetime)
+ORDER BY longest_D DESC;
+```
 ## Question 5. Three biggest pickup zones
 
 Which were the top pickup locations with over 13,000 in
@@ -143,7 +193,17 @@ Consider only `lpep_pickup_datetime` when filtering by date.
 
 #### Solution:
 - East Harlem North, East Harlem South, Morningside Heights
-  
+```
+SELECT
+CONCAT(zpu."Borough",'/',zpu."Zone") AS "pickup_loc",
+SUM(g.total_amount)
+FROM
+green_taxi_trips g JOIN zones zpu
+ON g."PULocationID" = zpu."LocationID"
+WHERE date(g.lpep_pickup_datetime) ='2019-10-18'
+GROUP BY pickup_loc
+ORDER BY SUM(g.total_amount) DESC;
+```
 ## Question 6. Largest tip
 
 For the passengers picked up in October 2019 in the zone
@@ -161,7 +221,20 @@ We need the name of the zone, not the ID.
   
 #### Solution:
 - JFK Airport
-
+```
+SELECT
+zpu."Zone" AS "pickup_loc",
+zdo."Zone" AS "dropoff_loc",
+MAX(g.tip_amount)
+FROM
+green_taxi_trips g JOIN zones zpu
+ON g."PULocationID" = zpu."LocationID"
+JOIN zones zdo
+ON g."DOLocationID" = zdo."LocationID"
+WHERE zpu."Zone" ='East Harlem North'
+GROUP BY zpu."Zone",zdo."Zone"
+ORDER BY MAX(g.tip_amount) DESC;
+```
   
 ## Terraform
 
