@@ -117,41 +117,41 @@ Answers:
 1.
 ```
 SELECT
-COUNT(1)
+  COUNT(1)
 FROM
-green_taxi_trips
+  green_taxi_trips
 WHERE trip_distance <=1;
 ```
 2.
 ```
 SELECT
-COUNT(1)
+  COUNT(1)
 FROM
-green_taxi_trips
+  green_taxi_trips
 WHERE (trip_distance >1 AND trip_distance <=3);
 ```
 3.
 ```
 SELECT
-COUNT(1)
+  COUNT(1)
 FROM
-green_taxi_trips
+  green_taxi_trips
 WHERE (trip_distance >3 AND trip_distance <=7);
 ```
 4.
 ```
 SELECT
-COUNT(1)
+  COUNT(1)
 FROM
-green_taxi_trips
+  green_taxi_trips
 WHERE (trip_distance >7 AND trip_distance <=10);
 ```
 5.
 ```
 SELECT
-COUNT(1)
+  COUNT(1)
 FROM
-green_taxi_trips
+  green_taxi_trips
 WHERE trip_distance > 10;
 ```
 #### Solution:
@@ -173,9 +173,10 @@ Tip: For every day, we only care about one single trip with the longest distance
 - 2019-10-31
 ```
 SELECT
-date(lpep_pickup_datetime),MAX(trip_distance) AS longest_D
+  date(lpep_pickup_datetime),
+  MAX(trip_distance) AS longest_D
 FROM
-green_taxi_trips
+  green_taxi_trips
 GROUP BY date(lpep_pickup_datetime)
 ORDER BY longest_D DESC;
 ```
@@ -195,11 +196,11 @@ Consider only `lpep_pickup_datetime` when filtering by date.
 - East Harlem North, East Harlem South, Morningside Heights
 ```
 SELECT
-CONCAT(zpu."Borough",'/',zpu."Zone") AS "pickup_loc",
-SUM(g.total_amount)
+  CONCAT(zpu."Borough",'/',zpu."Zone") AS "pickup_loc",
+  SUM(g.total_amount)
 FROM
-green_taxi_trips g JOIN zones zpu
-ON g."PULocationID" = zpu."LocationID"
+  green_taxi_trips g JOIN zones zpu
+  ON g."PULocationID" = zpu."LocationID"
 WHERE date(g.lpep_pickup_datetime) ='2019-10-18'
 GROUP BY pickup_loc
 ORDER BY SUM(g.total_amount) DESC;
@@ -223,14 +224,14 @@ We need the name of the zone, not the ID.
 - JFK Airport
 ```
 SELECT
-zpu."Zone" AS "pickup_loc",
-zdo."Zone" AS "dropoff_loc",
-MAX(g.tip_amount)
+  zpu."Zone" AS "pickup_loc",
+  zdo."Zone" AS "dropoff_loc",
+  MAX(g.tip_amount)
 FROM
-green_taxi_trips g JOIN zones zpu
-ON g."PULocationID" = zpu."LocationID"
-JOIN zones zdo
-ON g."DOLocationID" = zdo."LocationID"
+  green_taxi_trips g JOIN zones zpu
+  ON g."PULocationID" = zpu."LocationID"
+  JOIN zones zdo
+  ON g."DOLocationID" = zdo."LocationID"
 WHERE zpu."Zone" ='East Harlem North'
 GROUP BY zpu."Zone",zdo."Zone"
 ORDER BY MAX(g.tip_amount) DESC;
