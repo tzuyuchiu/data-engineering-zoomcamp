@@ -25,6 +25,8 @@ What's the version of `pip` in the image?
 - 23.3.1
 - 23.2.1
 
+#### Answer:
+- 24.3.1
 
 ## Question 2. Understanding Docker networking and docker-compose
 
@@ -67,6 +69,9 @@ volumes:
 - db:5433
 - postgres:5432
 - db:5432
+  
+#### Answer:
+- localhost:5432
 
 If there are more than one answers, select only one of them
 
@@ -107,6 +112,8 @@ Answers:
 - 104,793;  202,661;  109,603;  27,678;  35,189
 - 104,838;  199,013;  109,645;  27,688;  35,202
 
+#### Answer:
+- 104,838;  199,013;  109,645;  27,688;  35,202
 
 ## Question 4. Longest trip for each day
 
@@ -120,6 +127,8 @@ Tip: For every day, we only care about one single trip with the longest distance
 - 2019-10-26
 - 2019-10-31
 
+#### Answer:
+- 2019-10-31
 
 ## Question 5. Three biggest pickup zones
 
@@ -133,7 +142,9 @@ Consider only `lpep_pickup_datetime` when filtering by date.
 - Morningside Heights, Astoria Park, East Harlem South
 - Bedford, East Harlem North, Astoria Park
 
-
+#### Answer:
+- East Harlem North, East Harlem South, Morningside Heights
+  
 ## Question 6. Largest tip
 
 For the passengers picked up in October 2019 in the zone
@@ -149,7 +160,10 @@ We need the name of the zone, not the ID.
 - East Harlem North
 - East Harlem South
 
+#### Answer:
+- JFK Airport
 
+  
 ## Terraform
 
 In this section homework we'll prepare the environment by creating resources in GCP with Terraform.
@@ -175,7 +189,9 @@ Answers:
 - terraform init, terraform apply -auto-approve, terraform destroy
 - terraform import, terraform apply -y, terraform rm
 
-
+#### Answer:
+- terraform init, terraform apply -auto-approve, terraform destroy
+  
 ## Submitting the solutions
 
 * Form for submitting: https://courses.datatalks.club/de-zoomcamp-2025/homework/hw1
