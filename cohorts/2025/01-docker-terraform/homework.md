@@ -25,7 +25,7 @@ What's the version of `pip` in the image?
 - 23.3.1
 - 23.2.1
 
-#### Answer:
+#### Solution:
 - 24.3.1
 
 ## Question 2. Understanding Docker networking and docker-compose
@@ -70,7 +70,7 @@ volumes:
 - postgres:5432
 - db:5432
   
-#### Answer:
+#### Solution:
 - localhost:5432
 
 If there are more than one answers, select only one of them
@@ -112,7 +112,7 @@ Answers:
 - 104,793;  202,661;  109,603;  27,678;  35,189
 - 104,838;  199,013;  109,645;  27,688;  35,202
 
-#### Answer:
+#### Solution:
 - 104,838;  199,013;  109,645;  27,688;  35,202
 
 ## Question 4. Longest trip for each day
@@ -127,7 +127,7 @@ Tip: For every day, we only care about one single trip with the longest distance
 - 2019-10-26
 - 2019-10-31
 
-#### Answer:
+#### Solution:
 - 2019-10-31
 
 ## Question 5. Three biggest pickup zones
@@ -142,7 +142,7 @@ Consider only `lpep_pickup_datetime` when filtering by date.
 - Morningside Heights, Astoria Park, East Harlem South
 - Bedford, East Harlem North, Astoria Park
 
-#### Answer:
+#### Solution:
 - East Harlem North, East Harlem South, Morningside Heights
   
 ## Question 6. Largest tip
@@ -159,8 +159,8 @@ We need the name of the zone, not the ID.
 - JFK Airport
 - East Harlem North
 - East Harlem South
-
-#### Answer:
+  
+#### Solution:
 - JFK Airport
 
   
@@ -189,7 +189,7 @@ Answers:
 - terraform init, terraform apply -auto-approve, terraform destroy
 - terraform import, terraform apply -y, terraform rm
 
-#### Answer:
+#### Solution:
 - terraform init, terraform apply -auto-approve, terraform destroy
   
 ## Submitting the solutions
